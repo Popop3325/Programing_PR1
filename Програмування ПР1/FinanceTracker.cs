@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinanceTracker;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace Програмування_ПР1
         public FinanceTracker()
         {
             InitializeComponent();
+            transHisHeader.Items.Add("Дата       | Категорія  | Сума   | Тип");
         }
 
         private List<Transaction> transactions = new List<Transaction>();
@@ -29,7 +31,7 @@ namespace Програмування_ПР1
                 Transaction t = addForm.GetTransaction();
                 transactions.Add(t);
 
-                currentBalance += t.Amount;
+                currentBalance += (t.TransType == TransactionType.Income)? t.Amount: -t.Amount;
 
                 UpdateBalance();
                 UpdateHistory();
@@ -38,6 +40,14 @@ namespace Програмування_ПР1
         private void UpdateBalance()
         {
             labelCurrentBalance.Text = currentBalance.ToString("F2");
+            if (currentBalance >= 0)
+            {
+                labelCurrentBalance.ForeColor = Color.Green;
+            }
+            else
+            {
+                labelCurrentBalance.ForeColor = Color.Red;
+            }
         }
 
         private void UpdateHistory()
@@ -46,10 +56,33 @@ namespace Програмування_ПР1
 
             foreach (var t in transactions)
             {
-                string sign = t.Amount >= 0 ? "+" : "";
-                string line = $"{t.Date:dd.MM.yy} | {t.Category} | {sign}{t.Amount}";
+                string line = $"{t.Date:dd.MM.yy} | {t.Category} | {t.Amount} | {t.TransType}";
                 transHis.Items.Add(line);
             }
-        }  
+        }
+
+        private void buttonEditTrans_Click(object sender, EventArgs e)
+        {
+
+            if (transHis.SelectedIndex == -1) return;
+            int index = transHis.SelectedIndex;
+
+            TransactionEdit editForm = new TransactionEdit(transactions[index]);
+            editForm.ShowDialog();
+
+            if (editForm.DialogResult == DialogResult.OK)
+            {
+                transactions[index] = editForm.GetEditedTransaction();
+                currentBalance = 0;
+
+                foreach (var t in transactions)
+                {
+                    currentBalance += t.TransType == TransactionType.Income ? t.Amount : -t.Amount;
+                }
+
+                UpdateBalance();
+                UpdateHistory();
+            }
+        }
     }
 }       

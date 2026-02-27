@@ -12,30 +12,35 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Програмування_ПР1
 {
-    public partial class AddTransactionForm : Form
+    public partial class TransactionEdit : Form
     {
-        public AddTransactionForm()
+
+        public TransactionEdit(Transaction t)
         {
             InitializeComponent();
+            sumEdit.Text = t.Amount.ToString("F2");
+            catEdit.SelectedItem = t.Category;
+            rbIncomeEdit.Checked = t.TransType == TransactionType.Income;
+            rbExpenseEdit.Checked = t.TransType == TransactionType.Expense;
         }
 
         private Transaction transaction;
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void buttonSaveEdit_Click(object sender, EventArgs e)
         {
-            if (!decimal.TryParse(inputNumber.Text, out decimal amount))
+            if (!decimal.TryParse(sumEdit.Text, out decimal amount))
             {
                 MessageBox.Show("Введіть коректне число!");
                 return;
             }
-            string category = comboBox1.SelectedItem?.ToString() ?? "Other";
-            TransactionType transType = rbIncome.Checked ? TransactionType.Income : TransactionType.Expense;
+            string category = catEdit.SelectedItem?.ToString() ?? "Other";
+            TransactionType transType = rbIncomeEdit.Checked ? TransactionType.Income : TransactionType.Expense;
             transaction = new Transaction(amount, category, transType);
 
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
-        public Transaction GetTransaction()
+        public Transaction GetEditedTransaction()
         {
             return transaction;
         }
