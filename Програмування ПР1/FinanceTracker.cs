@@ -18,8 +18,8 @@ namespace Програмування_ПР1
             InitializeComponent();
             transHisHeader.Items.Add("Дата       | Категорія  | Сума   | Тип");
         }
+        TransactionRepository repo = new TransactionRepository();
 
-        private List<Transaction> transactions = new List<Transaction>();
         private decimal currentBalance = 0;
 
         private void button1_Click(object sender, EventArgs e)
@@ -29,7 +29,7 @@ namespace Програмування_ПР1
             if (addForm.ShowDialog() == DialogResult.OK)
             {
                 Transaction t = addForm.GetTransaction();
-                transactions.Add(t);
+                repo.Add(t);
 
                 currentBalance += (t.TransType == TransactionType.Income)? t.Amount: -t.Amount;
 
@@ -54,7 +54,7 @@ namespace Програмування_ПР1
         {
             transHis.Items.Clear();
 
-            foreach (var t in transactions)
+            foreach (var t in repo.GetAll)
             {
                 string line = $"{t.Date:dd.MM.yy} | {t.Category} | {t.Amount} | {t.TransType}";
                 transHis.Items.Add(line);
@@ -65,19 +65,19 @@ namespace Програмування_ПР1
         {
 
             if (transHis.SelectedIndex == -1) return;
-            int index = transHis.SelectedIndex;
+            int id = transHis.SelectedIndex;
 
-            TransactionEdit editForm = new TransactionEdit(transactions[index]);
+            TransactionEdit editForm = new TransactionEdit(repo.GetById(id));
             editForm.ShowDialog();
 
             if (editForm.DialogResult == DialogResult.OK)
             {
-                transactions[index] = editForm.GetEditedTransaction();
+                repo.Update(editForm.GetEditedTransaction(), id);
                 currentBalance = 0;
 
-                foreach (var t in transactions)
+                foreach (var t in repo.GetAll)
                 {
-                    currentBalance += t.TransType == TransactionType.Income ? t.Amount : -t.Amount;
+                    currentBalance += (t.TransType == TransactionType.Income) ? t.Amount : -t.Amount;
                 }
 
                 UpdateBalance();
