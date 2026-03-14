@@ -6,32 +6,32 @@ using System.Threading.Tasks;
 
 namespace Програмування_ПР1
 {
-    internal class TransactionRepository : IRepository<Transaction>
+    internal class TransactionRepository<T> : IRepository<T>
     {
-        private List<Transaction> transactions = new List<Transaction>();
+        private List<T> transactions = new List<T>();
 
-        public void Add(Transaction item)
+        public void Add(T item)
         {
             transactions.Add(item);
         }
-        public void Remove(Transaction item)
+        public void Remove(T item)
         {
             transactions.Remove(item);
         }
-        public Transaction GetById(int id)
+        public T GetById(int id)
         {
             if (id >= 0 && id < transactions.Count)
             {
                 return transactions[id];
             }
-            return null;
+            return default;
         }
 
-        public IEnumerable<Transaction> GetAll
+        public IEnumerable<T> GetAll
         {
             get { return transactions; }
         }
-        public void Update(Transaction item, int id)
+        public void Update(T item, int id)
         {
             if (id >= 0 && id < transactions.Count)
                 transactions[id] = item;

@@ -39,7 +39,7 @@
             // 
             // gbTransType
             // 
-            this.gbTransType.BackColor = System.Drawing.Color.DarkKhaki;
+            this.gbTransType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.gbTransType.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.gbTransType.Controls.Add(this.rbIncomeEdit);
             this.gbTransType.Controls.Add(this.rbExpenseEdit);
@@ -127,7 +127,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkKhaki;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(507, 238);
             this.Controls.Add(this.gbTransType);

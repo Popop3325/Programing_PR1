@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FinanceTracker));
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.buttonEditTrans = new System.Windows.Forms.Button();
+            this.transHisHeader = new System.Windows.Forms.ListBox();
             this.transHis = new System.Windows.Forms.ListBox();
             this.newTransaction = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -37,8 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.UpperPanel = new System.Windows.Forms.Panel();
             this.mainLabel = new System.Windows.Forms.Label();
-            this.transHisHeader = new System.Windows.Forms.ListBox();
-            this.buttonEditTrans = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.UpperPanel.SuspendLayout();
@@ -47,6 +48,7 @@
             // mainPanel
             // 
             this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.mainPanel.Controls.Add(this.btnDelete);
             this.mainPanel.Controls.Add(this.buttonEditTrans);
             this.mainPanel.Controls.Add(this.transHisHeader);
             this.mainPanel.Controls.Add(this.transHis);
@@ -59,6 +61,33 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(645, 410);
             this.mainPanel.TabIndex = 0;
+            // 
+            // buttonEditTrans
+            // 
+            this.buttonEditTrans.BackColor = System.Drawing.Color.Snow;
+            this.buttonEditTrans.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonEditTrans.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonEditTrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonEditTrans.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonEditTrans.Location = new System.Drawing.Point(88, 203);
+            this.buttonEditTrans.Name = "buttonEditTrans";
+            this.buttonEditTrans.Size = new System.Drawing.Size(117, 48);
+            this.buttonEditTrans.TabIndex = 7;
+            this.buttonEditTrans.Text = "Редагувати транзакцію";
+            this.buttonEditTrans.UseVisualStyleBackColor = false;
+            this.buttonEditTrans.Click += new System.EventHandler(this.buttonEditTrans_Click);
+            // 
+            // transHisHeader
+            // 
+            this.transHisHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.transHisHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.transHisHeader.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.transHisHeader.FormattingEnabled = true;
+            this.transHisHeader.ItemHeight = 25;
+            this.transHisHeader.Location = new System.Drawing.Point(249, 103);
+            this.transHisHeader.Name = "transHisHeader";
+            this.transHisHeader.Size = new System.Drawing.Size(369, 27);
+            this.transHisHeader.TabIndex = 6;
             // 
             // transHis
             // 
@@ -144,32 +173,19 @@
             this.mainLabel.Text = "FINANCE TRACKER";
             this.mainLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // transHisHeader
+            // btnDelete
             // 
-            this.transHisHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
-            this.transHisHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.transHisHeader.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.transHisHeader.FormattingEnabled = true;
-            this.transHisHeader.ItemHeight = 25;
-            this.transHisHeader.Location = new System.Drawing.Point(249, 103);
-            this.transHisHeader.Name = "transHisHeader";
-            this.transHisHeader.Size = new System.Drawing.Size(369, 27);
-            this.transHisHeader.TabIndex = 6;
-            // 
-            // buttonEditTrans
-            // 
-            this.buttonEditTrans.BackColor = System.Drawing.Color.DarkKhaki;
-            this.buttonEditTrans.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonEditTrans.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonEditTrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonEditTrans.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonEditTrans.Location = new System.Drawing.Point(88, 203);
-            this.buttonEditTrans.Name = "buttonEditTrans";
-            this.buttonEditTrans.Size = new System.Drawing.Size(117, 48);
-            this.buttonEditTrans.TabIndex = 7;
-            this.buttonEditTrans.Text = "Редагувати транзакцію";
-            this.buttonEditTrans.UseVisualStyleBackColor = false;
-            this.buttonEditTrans.Click += new System.EventHandler(this.buttonEditTrans_Click);
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnDelete.Location = new System.Drawing.Point(88, 258);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(117, 31);
+            this.btnDelete.TabIndex = 8;
+            this.btnDelete.Text = "Видалити";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // FinanceTracker
             // 
@@ -202,6 +218,7 @@
         private System.Windows.Forms.ListBox transHis;
         private System.Windows.Forms.ListBox transHisHeader;
         private System.Windows.Forms.Button buttonEditTrans;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 

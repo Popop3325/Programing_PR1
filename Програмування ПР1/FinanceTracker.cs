@@ -18,7 +18,7 @@ namespace Програмування_ПР1
             InitializeComponent();
             transHisHeader.Items.Add("Дата       | Категорія  | Сума   | Тип");
         }
-        TransactionRepository repo = new TransactionRepository();
+        TransactionRepository<Transaction> repo = new TransactionRepository<Transaction>();
 
         private decimal currentBalance = 0;
 
@@ -30,15 +30,18 @@ namespace Програмування_ПР1
             {
                 Transaction t = addForm.GetTransaction();
                 repo.Add(t);
-
-                currentBalance += (t.TransType == TransactionType.Income)? t.Amount: -t.Amount;
-
                 UpdateBalance();
                 UpdateHistory();
             }
         }
         private void UpdateBalance()
         {
+            currentBalance = 0;
+            foreach (var t in repo.GetAll)
+            {
+                currentBalance += (t.TransType == TransactionType.Income) ? t.Amount : -t.Amount;
+            }
+
             labelCurrentBalance.Text = currentBalance.ToString("F2");
             if (currentBalance >= 0)
             {
@@ -83,6 +86,16 @@ namespace Програмування_ПР1
                 UpdateBalance();
                 UpdateHistory();
             }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (transHis.SelectedIndex == -1) return;
+            int id = transHis.SelectedIndex;
+
+            repo.Remove(repo.GetById(id));
+            UpdateBalance();
+            UpdateHistory();
         }
     }
 }       
