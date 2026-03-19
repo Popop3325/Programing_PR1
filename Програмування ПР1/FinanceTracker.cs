@@ -13,14 +13,22 @@ namespace Програмування_ПР1
 {
     public partial class FinanceTracker : Form
     {
+        TransactionRepository<Transaction> repo = new TransactionRepository<Transaction>();
+        DataStorage storage = new DataStorage();
+        private decimal currentBalance = 0;
+
         public FinanceTracker()
         {
             InitializeComponent();
             transHisHeader.Items.Add("Дата       | Категорія  | Сума   | Тип");
+            foreach (var t in storage.GetTransactions())
+            {
+                repo.Add(t);
+            }
+                UpdateBalance();
+                UpdateHistory();
         }
-        TransactionRepository<Transaction> repo = new TransactionRepository<Transaction>();
-
-        private decimal currentBalance = 0;
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -33,11 +41,12 @@ namespace Програмування_ПР1
                 UpdateBalance();
                 UpdateHistory();
             }
+            storage.Save(repo.GetAll().ToList());
         }
         private void UpdateBalance()
         {
             currentBalance = 0;
-            foreach (var t in repo.GetAll)
+            foreach (var t in repo.GetAll())
             {
                 currentBalance += (t.TransType == TransactionType.Income) ? t.Amount : -t.Amount;
             }
@@ -57,7 +66,7 @@ namespace Програмування_ПР1
         {
             transHis.Items.Clear();
 
-            foreach (var t in repo.GetAll)
+            foreach (var t in repo.GetAll())
             {
                 string line = $"{t.Date:dd.MM.yy} | {t.Category} | {t.Amount} | {t.TransType}";
                 transHis.Items.Add(line);
@@ -78,13 +87,14 @@ namespace Програмування_ПР1
                 repo.Update(editForm.GetEditedTransaction(), id);
                 currentBalance = 0;
 
-                foreach (var t in repo.GetAll)
+                foreach (var t in repo.GetAll())
                 {
                     currentBalance += (t.TransType == TransactionType.Income) ? t.Amount : -t.Amount;
                 }
 
                 UpdateBalance();
                 UpdateHistory();
+                storage.Save(repo.GetAll().ToList());
             }
         }
 
@@ -96,6 +106,7 @@ namespace Програмування_ПР1
             repo.Remove(repo.GetById(id));
             UpdateBalance();
             UpdateHistory();
+            storage.Save(repo.GetAll().ToList());
         }
     }
 }       

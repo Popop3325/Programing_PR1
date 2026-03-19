@@ -27,14 +27,14 @@ namespace Програмування_ПР1
             return default;
         }
 
-        public IEnumerable<T> GetAll
-        {
-            get { return transactions; }
-        }
         public void Update(T item, int id)
         {
             if (id >= 0 && id < transactions.Count)
                 transactions[id] = item;
+        }
+        public List<T> GetAll()
+        {
+            return transactions;
         }
     }
 }

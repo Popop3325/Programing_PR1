@@ -12,6 +12,7 @@ namespace Програмування_ПР1
         void Remove(T item);
         void Update(T item, int id);
         T GetById(int id);
+        List<T> GetAll();
 
     }
 }
