@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -27,9 +28,18 @@ namespace Програмування_ПР1
                 MessageBox.Show("Введіть коректне число!");
                 return;
             }
-            string category = comboBox1.SelectedItem?.ToString() ?? "Other";
+            string category = comboBox1.SelectedItem?.ToString() ?? comboBox1.Text;
             TransactionType transType = rbIncome.Checked ? TransactionType.Income : TransactionType.Expense;
-            transaction = new Transaction(amount, category, transType);
+
+            var temp = new Transaction(amount, category, transType);
+
+            if (!temp.IsValid(out string errorMessage))
+            {
+                MessageBox.Show(errorMessage);
+                return;
+            }
+
+            transaction = temp;
 
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -38,6 +48,6 @@ namespace Програмування_ПР1
         public Transaction GetTransaction()
         {
             return transaction;
-        }
+        }  
     }
 }

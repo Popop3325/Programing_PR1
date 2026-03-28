@@ -11,21 +11,36 @@ namespace Програмування_ПР1
 {
     public class DataStorage
     {
-       private string filePath = "transactions.json";
-       
+        private string filePath = "transactions.json";
+
         public void Save(List<Transaction> transactions)
         {
-            string json = JsonSerializer.Serialize(transactions);
-            File.WriteAllText(filePath, json);
+            try
+            {
+                string json = JsonSerializer.Serialize(transactions);
+                File.WriteAllText(filePath, json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Помилка при збереженні у файл: {ex.Message}");
+            }
         }
         public List<Transaction> GetTransactions()
         {
-            if (!File.Exists(filePath))
+            try
             {
+                if (!File.Exists(filePath))
+                {
+                    return new List<Transaction>();
+                }
+                string json = File.ReadAllText(filePath);
+                return JsonSerializer.Deserialize<List<Transaction>>(json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Помилка при завантаженні файлу: {ex.Message}");
                 return new List<Transaction>();
             }
-            string json = File.ReadAllText(filePath);
-            return JsonSerializer.Deserialize<List<Transaction>>(json);
         }
 
     }

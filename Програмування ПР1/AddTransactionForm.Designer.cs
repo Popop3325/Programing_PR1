@@ -33,8 +33,11 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.rbIncome = new System.Windows.Forms.RadioButton();
             this.rbExpense = new System.Windows.Forms.RadioButton();
-            this.gbTransType = new System.Windows.Forms.GroupBox();
-            this.gbTransType.SuspendLayout();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // inputNumber
@@ -45,17 +48,17 @@
             this.inputNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.inputNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.inputNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.inputNumber.Location = new System.Drawing.Point(91, 56);
+            this.inputNumber.Location = new System.Drawing.Point(121, 82);
             this.inputNumber.Name = "inputNumber";
-            this.inputNumber.Size = new System.Drawing.Size(175, 29);
+            this.inputNumber.Size = new System.Drawing.Size(60, 29);
             this.inputNumber.TabIndex = 0;
-            this.inputNumber.Text = "Сума";
             // 
             // comboBox1
             // 
             this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
@@ -65,18 +68,17 @@
             "Розваги",
             "Зарплатня",
             "Кишенькові гроші"});
-            this.comboBox1.Location = new System.Drawing.Point(91, 91);
+            this.comboBox1.Location = new System.Drawing.Point(121, 135);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(175, 21);
+            this.comboBox1.Size = new System.Drawing.Size(126, 24);
             this.comboBox1.TabIndex = 1;
-            this.comboBox1.Text = "Категорія";
             // 
             // buttonSave
             // 
             this.buttonSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
             this.buttonSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonSave.Location = new System.Drawing.Point(188, 134);
+            this.buttonSave.Location = new System.Drawing.Point(197, 183);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(86, 30);
             this.buttonSave.TabIndex = 2;
@@ -87,10 +89,12 @@
             // rbIncome
             // 
             this.rbIncome.AutoSize = true;
-            this.rbIncome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.rbIncome.Location = new System.Drawing.Point(6, 12);
+            this.rbIncome.BackColor = System.Drawing.Color.Transparent;
+            this.rbIncome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rbIncome.ForeColor = System.Drawing.Color.LightGreen;
+            this.rbIncome.Location = new System.Drawing.Point(3, 7);
             this.rbIncome.Name = "rbIncome";
-            this.rbIncome.Size = new System.Drawing.Size(113, 20);
+            this.rbIncome.Size = new System.Drawing.Size(124, 20);
             this.rbIncome.TabIndex = 3;
             this.rbIncome.TabStop = true;
             this.rbIncome.Text = "Надходження";
@@ -99,29 +103,58 @@
             // rbExpense
             // 
             this.rbExpense.AutoSize = true;
-            this.rbExpense.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.rbExpense.Location = new System.Drawing.Point(6, 32);
+            this.rbExpense.BackColor = System.Drawing.Color.Transparent;
+            this.rbExpense.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rbExpense.ForeColor = System.Drawing.Color.Crimson;
+            this.rbExpense.Location = new System.Drawing.Point(3, 30);
             this.rbExpense.Name = "rbExpense";
-            this.rbExpense.Size = new System.Drawing.Size(80, 20);
+            this.rbExpense.Size = new System.Drawing.Size(87, 20);
             this.rbExpense.TabIndex = 4;
             this.rbExpense.TabStop = true;
             this.rbExpense.Text = "Витрата";
             this.rbExpense.UseVisualStyleBackColor = false;
             // 
-            // gbTransType
+            // label1
             // 
-            this.gbTransType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(50)))), ((int)(((byte)(68)))));
-            this.gbTransType.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.gbTransType.Controls.Add(this.rbIncome);
-            this.gbTransType.Controls.Add(this.rbExpense);
-            this.gbTransType.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.gbTransType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.gbTransType.ForeColor = System.Drawing.Color.Black;
-            this.gbTransType.Location = new System.Drawing.Point(279, 54);
-            this.gbTransType.Name = "gbTransType";
-            this.gbTransType.Size = new System.Drawing.Size(124, 58);
-            this.gbTransType.TabIndex = 5;
-            this.gbTransType.TabStop = false;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(120, 64);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 15);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Сума";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(118, 116);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(74, 15);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Категорія";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.Location = new System.Drawing.Point(272, 77);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(31, 15);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Тип";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.rbIncome);
+            this.panel1.Controls.Add(this.rbExpense);
+            this.panel1.Location = new System.Drawing.Point(275, 92);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(132, 54);
+            this.panel1.TabIndex = 9;
             // 
             // AddTransactionForm
             // 
@@ -129,15 +162,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(50)))), ((int)(((byte)(68)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(441, 238);
-            this.Controls.Add(this.gbTransType);
+            this.ClientSize = new System.Drawing.Size(483, 307);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.inputNumber);
             this.Name = "AddTransactionForm";
             this.Text = "AddTransactionForm";
-            this.gbTransType.ResumeLayout(false);
-            this.gbTransType.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,6 +186,9 @@
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.RadioButton rbIncome;
         private System.Windows.Forms.RadioButton rbExpense;
-        private System.Windows.Forms.GroupBox gbTransType;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel1;
     }
 }

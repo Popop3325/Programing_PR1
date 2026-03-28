@@ -32,9 +32,18 @@ namespace Програмування_ПР1
                 MessageBox.Show("Введіть коректне число!");
                 return;
             }
-            string category = catEdit.SelectedItem?.ToString() ?? "Other";
+            string category = catEdit.SelectedItem?.ToString() ?? catEdit.Text;
             TransactionType transType = rbIncomeEdit.Checked ? TransactionType.Income : TransactionType.Expense;
-            transaction = new Transaction(amount, category, transType);
+
+            Transaction temp = new Transaction(amount, category, transType);
+
+            if (!temp.IsValid(out string errorMessage))
+            {
+                MessageBox.Show(errorMessage);
+                return;
+            }
+
+            transaction = temp;
 
             this.DialogResult = DialogResult.OK;
             this.Close();
