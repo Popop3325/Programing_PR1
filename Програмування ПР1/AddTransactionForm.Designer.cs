@@ -85,6 +85,7 @@
             this.buttonSave.Text = "Створити";
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            this.buttonSave.Enter += new System.EventHandler(this.buttonSave_Click);
             // 
             // rbIncome
             // 

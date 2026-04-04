@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.IO;
 
-namespace Програмування_ПР1
+namespace FinanceTracker.Tests
 {
     /// <summary>
     /// Відповідає за збереження та завантаження транзакцій у файл в форматі JSON.

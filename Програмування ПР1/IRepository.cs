@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Програмування_ПР1
 {
+    /// <summary>
+    /// Описує базовий інтерфейс для роботи з колекцією об'єктів типу T.
+    /// </summary>
     internal interface IRepository<T>
     {
         void Add(T item);

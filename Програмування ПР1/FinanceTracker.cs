@@ -1,12 +1,7 @@
 ﻿using FinanceTracker;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Програмування_ПР1
@@ -30,7 +25,7 @@ namespace Програмування_ПР1
         }
         
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonAddTransaction_Click(object sender, EventArgs e)
         {
             AddTransactionForm addForm = new AddTransactionForm();
 

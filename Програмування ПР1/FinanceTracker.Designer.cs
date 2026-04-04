@@ -117,7 +117,7 @@
             this.newTransaction.TabIndex = 4;
             this.newTransaction.Text = "Нова транзакція";
             this.newTransaction.UseVisualStyleBackColor = false;
-            this.newTransaction.Click += new System.EventHandler(this.button1_Click);
+            this.newTransaction.Click += new System.EventHandler(this.buttonAddTransaction_Click);
             // 
             // panel1
             // 

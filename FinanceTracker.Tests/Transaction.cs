@@ -1,9 +1,8 @@
-﻿using FinanceTracker;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 
-namespace Програмування_ПР1
+namespace FinanceTracker.Tests
 {
     /// <summary>
     /// Представляє фінансову транзакцію з сумою, категорією, датою та типом (дохід чи витрата).
